@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  <link rel="shortcut icon" href="/favicon.png" />
+  
+  <style>
+    .card {border:1px solid green; width:200px; height: 300px; position:absolute;}
+    .dot {position:absolute; width:100px}
+    .dot0 {background-color:pink; left: 0; top:0}
+    .dot1 {background-color:green; left: 100; top:0}
+    .dot2 {background-color:blue; left: 0; top:100}
+    .dot3 {background-color:red; left: 100; top:100}
+    .dot4 {background-color:yellow; left: 0; top:200}
+    .dot5 {background-color:purple; left: 100; top:200}
+  </style>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+</head>
+<body data-ng-app="SetsGame">
+
+  <div id="header-container">
+    <header class="wrapper clearfix">
+    </header>
+  </div>
+  
+  <div id="main-container" class="container" data-ng-controller="SetsGameController">
+
+    <div data-ng-repeat="c in cards" data-card="010101" data-ng-model="c"></div>
+  
+  </div> <!-- #main-container -->
+
+  
+  <div id="footer-container">
+    <footer class="wrapper">
+
+    </footer>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.3.min.js"><\/script>')</script>
+  <script src="controller.js"></script>
+
+
+
+</body>
+</html>
