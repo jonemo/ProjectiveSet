@@ -15,16 +15,16 @@ myApp.directive('card', function() {
             
             var val = scope.c;
             
-            console.log(element[0]);
+            console.log(val);
             
             for (var i=5; i>=0; i--) {
-              if (val > Math.pow(2,i)) {
-                val = val % Math.pow(2,i);
-                var dot = document.createElement("div");
-                dot.className = 'dot dot' + (5-i);
-                dot.innerHTML = 'dot' + (5-i);
-                element[0].appendChild(dot);
+              var dot = document.createElement("div");
+              dot.className = 'dot';
+              if (val >= Math.pow(2,i)) {
+                dot.className += ' dot' + (5-i);
               }
+              element[0].appendChild(dot);
+              val = val % Math.pow(2,i);
             }
             
             
@@ -32,15 +32,27 @@ myApp.directive('card', function() {
     }
 });
 
+function fisherYates ( myArray ) {
+  var i = myArray.length, j, temp;
+  if ( i === 0 ) return false;
+  while ( --i ) {
+     j = Math.floor( Math.random() * ( i + 1 ) );
+     temp = myArray[i];
+     myArray[i] = myArray[j]; 
+     myArray[j] = temp;
+   }
+}
+
 myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $http) {
 
-  $scope.cards = [
-    parseInt('101010', 2),
-    parseInt('101001', 2),
-    parseInt('100110', 2),
-    parseInt('011010', 2),
-    parseInt('111010', 2),
-    parseInt('101011', 2)
-  ]
+  $scope.deck = [];
+  
+  // fill 1..64 into the cards array
+  var i=64;
+  while ( --i ) $scope.deck.push(i+1);
+  
+  // shuffle
+  fisherYates($scope.deck);
+
 
 }]);

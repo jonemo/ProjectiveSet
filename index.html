@@ -11,14 +11,14 @@
   <link rel="shortcut icon" href="/favicon.png" />
   
   <style>
-    .card {border:1px solid green; width:200px; height: 300px; position:absolute;}
-    .dot {position:absolute; width:100px}
-    .dot0 {background-color:pink; left: 0; top:0}
-    .dot1 {background-color:green; left: 100; top:0}
-    .dot2 {background-color:blue; left: 0; top:100}
-    .dot3 {background-color:red; left: 100; top:100}
-    .dot4 {background-color:yellow; left: 0; top:200}
-    .dot5 {background-color:purple; left: 100; top:200}
+    .card {border:1px solid #555; width:200px; height: 300px; border-radius: 0 6px 0 0; margin:0 30px 50px 0; float:left}
+    .dot {float:left; width:70px; height: 70px; border: 15px solid white; border-radius: 50px;}
+    .dot0 {background-color:red;}
+    .dot1 {background-color:orange;}
+    .dot2 {background-color:yellow;}
+    .dot3 {background-color:green;}
+    .dot4 {background-color:blue;}
+    .dot5 {background-color:purple;}
   </style>
 
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
@@ -32,7 +32,7 @@
   
   <div id="main-container" class="container" data-ng-controller="SetsGameController">
 
-    <div data-ng-repeat="c in cards" data-card="010101" data-ng-model="c"></div>
+    <div data-ng-repeat="c in deck" data-card="{{c}}" data-ng-model="c"></div>
   
   </div> <!-- #main-container -->
 
