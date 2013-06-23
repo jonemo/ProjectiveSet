@@ -56,6 +56,13 @@
       <div data-ng-repeat="c in s" data-card></div>
     </div>
     
+    <hr>
+    
+    <div class="correctSet" style="display:none">
+      <p>remaining in deck</p>
+      <div data-ng-repeat="c in deck" data-card data-ng-click="toggleCard(c)"></div>
+    </div>
+    
   </div> <!-- #main-container -->
 
   
