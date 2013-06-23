@@ -84,7 +84,7 @@ myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $h
     $scope.correctSets.reverse();
     
     if ($scope.deck.length < correctSet.length) {
-      alert('Deck finished in ' + ((Date.now()-$scope.startingTime)/1000) + ' seconds');
+      setTimeout(function () {alert('Deck finished in ' + ((Date.now()-$scope.startingTime)/1000) + ' seconds')}, 0);
     } else {
       for (var i=0; i<correctSet.length; i++) {
         $scope.visibleCards.push( $scope.deck.shift() );
