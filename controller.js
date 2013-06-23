@@ -43,20 +43,28 @@ function fisherYates ( myArray ) {
 
 myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $http) {
 
-  $scope.deck = [];
-  $scope.visibleCards = [];
-  $scope.correctSets = [];
+  $scope.noOfDots = 6;
+  $scope.gameInitialized = false;
   
-  // fill 1..64 into the cards array
-  var i=64;
-  while ( --i ) $scope.deck.push( {value:i+1, selected:false} );
+  $scope.initializeGame = function () {
+    $scope.deck = [];
+    $scope.visibleCards = [];
+    $scope.correctSets = [];
+    $scope.startingTime = Date.now();    
   
-  // shuffle
-  fisherYates($scope.deck);
+    // fill 1..64 into the cards array
+    var i=Math.pow(2, $scope.noOfDots);
+    while ( --i ) $scope.deck.push( {value:i, selected:false} );
+    
+    // shuffle
+    fisherYates($scope.deck);
 
-  // first seven cards are put on table
-  for ( i=0; i<7; i++) {
-    $scope.visibleCards.push( $scope.deck.shift() );
+    // first seven cards are put on table
+    for ( i=0; i<$scope.noOfDots+1; i++) {
+      $scope.visibleCards.push( $scope.deck.shift() );
+    }
+    
+    $scope.gameInitialized = true;
   }
 
   $scope.correctSetSelected = function () {
@@ -76,7 +84,7 @@ myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $h
     $scope.correctSets.reverse();
     
     if ($scope.deck.length < correctSet.length) {
-      alert('deck empty');
+      alert('Deck finished in ' + ((Date.now()-$scope.startingTime)/1000) + ' seconds');
     } else {
       for (var i=0; i<correctSet.length; i++) {
         $scope.visibleCards.push( $scope.deck.shift() );
@@ -86,7 +94,7 @@ myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $h
   
   $scope.toggleCard = function (c) {
     var xor = 0, selectedCnt = 0;
-    for (var i=0; i<7; i++) {
+    for (var i=0; i<$scope.noOfDots+1; i++) {
       if ($scope.visibleCards[i] === c) c.selected = ! c.selected;
       if ($scope.visibleCards[i].selected) {
         xor ^= $scope.visibleCards[i].value;

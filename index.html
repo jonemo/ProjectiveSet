@@ -39,12 +39,20 @@
   </div>
   
   <div id="main-container" class="container" data-ng-controller="SetsGameController">
+  
+    <div>
+      <label for="noOfDots">Number of dots (between 3 and 6):</label>
+      <input id="noOfDots" type="number" min="3" max="6" data-ng-model="noOfDots">
+      <button data-ng-click="initializeGame()"><span data-ng-hide="gameInitialized">Start</span><span data-ng-show="gameInitialized">Restart</span> Game</button>
+    </div>
+    
+    <hr>
 
-    <div data-ng-repeat="c in visibleCards" data-card data-ng-click="toggleCard(c)"></div>
+    <div data-ng-repeat="c in visibleCards" data-card data-ng-click="toggleCard(c)" data-ng-show="gameInitialized"></div>
     
     <hr>
     
-    <div class="correctSet" data-ng-repeat="s in correctSets">
+    <div class="correctSet" data-ng-repeat="s in correctSets" data-ng-show="gameInitialized">
       <div data-ng-repeat="c in s" data-card></div>
     </div>
     
