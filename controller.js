@@ -65,6 +65,8 @@ myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $h
     }
     
     $scope.gameInitialized = true;
+    
+    ga('send', 'event', 'round_start', 'deck_initialized', $scope.noOfDots);
   }
 
   $scope.correctSetSelected = function () {
@@ -84,7 +86,9 @@ myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $h
     $scope.correctSets.reverse();
     
     if ($scope.deck.length < correctSet.length) {
-      setTimeout(function () {alert('Deck finished in ' + ((Date.now()-$scope.startingTime)/1000) + ' seconds')}, 0);
+      var timeNeeded = ((Date.now()-$scope.startingTime)/1000);
+      setTimeout(function () {alert('Deck finished in ' + timeNeeded + ' seconds')}, 0);
+      ga('send', 'event', 'round_end', 'deck_completed', timeNeeded);
     } else {
       for (var i=0; i<correctSet.length; i++) {
         $scope.visibleCards.push( $scope.deck.shift() );
