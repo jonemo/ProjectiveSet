@@ -30,6 +30,30 @@ myApp.directive('card', function() {
     }
 });
 
+myApp.directive('monochromecard', function() {
+    return {
+        restrict: 'A',
+        template: '<div class="card"></div>',
+        replace: true,
+        link: function(scope, element, attr, ctrl) {
+           
+          var val = scope.c;
+          
+          for (var i=5; i>=0; i--) {
+            var dot = document.createElement("div");
+            dot.className = 'dot';
+            if (val >= Math.pow(2,i)) {
+              dot.className += ' monodot';
+            } else {
+              dot.className += ' nodot';
+            }
+            element[0].appendChild(dot);
+            val = val % Math.pow(2,i);
+          }
+        }
+    }
+});
+
 function fisherYates ( myArray ) {
   var i = myArray.length, j, temp;
   if ( i === 0 ) return false;
@@ -46,11 +70,15 @@ myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $h
   $scope.noOfDots = 6;
   $scope.gameInitialized = false;
   
-  $scope.initializeGame = function () {
+  $scope.initializeGame = function (noOfDots) {
     $scope.deck = [];
     $scope.visibleCards = [];
     $scope.correctSets = [];
-    $scope.startingTime = Date.now();    
+    $scope.startingTime = Date.now(); 
+
+    if (noOfDots && parseInt(noOfDots) >= 3 && parseInt(noOfDots) <= 6) {
+      $scope.noOfDots = noOfDots;
+    }
   
     // fill 1..64 into the cards array
     var i=Math.pow(2, $scope.noOfDots);

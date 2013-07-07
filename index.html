@@ -1,20 +1,25 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, user-scalable=no"/>
+  <meta name="viewport" content="width=520, user-scalable=no"/>
 
   <title>Projective Set</title>
   <meta name="description" content="">
   <meta name="author" content="">
   
   <link rel="shortcut icon" href="/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="/bootstrap.min.css" />
   
   <style>
-    .card {border:1px solid #555; width:200px; height: 300px; border-radius: 0 6px 0 0; margin:0 30px 50px 0; float:left}
+    body {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;}
+    
+    .container {width: 520px}
+  
+    .card {border:1px solid #555; width:100px; height: 150px; border-radius: 0 4px 0 0; margin:0 15px 25px 0; float:left}
     .card.selected {background-color: #ccc}
-    .dot {float:left; width:70px; height: 70px; border: 1px solid; border-radius: 50px; margin: 14px}
-    .nodot {border: 0; margin: 15px}
+    .dot {float:left; width:34px; height: 34px; border: 1px solid; border-radius: 25px; margin: 7px;}
+    .nodot {border: 0; margin: 8px}
+    .monodot { background-color:grey; border-color: grey}
     .dot0 {background-color:red; border-color: red }
     .dot1 {background-color:orange; border-color: orange }
     .dot2 {background-color:yellow; border-color: yellow }
@@ -24,9 +29,9 @@
     
     hr {clear:both}
     .correctSet {clear:both; margin-top:30px;}
-    .correctSet .card {width:100px; height: 150px; border-radius: 0 3px 0 0; margin:0 15px 25px 0;}
-    .correctSet .dot {width:34px; height: 34px; border-radius: 25px; margin: 7px}
-    .correctSet .nodot {margin: 8px} 
+    .correctSet .card, .card.small {width:50px; height: 75px; border-radius: 0 2px 0 0; margin:0 7px 12px 0;}
+    .correctSet .dot, .card.small .dot {width:17px; height: 17px; border-radius: 12px; margin: 3px}
+    .correctSet .nodot, .card.small .nodot {margin: 4px} 
   </style>
   
   <script>
@@ -50,10 +55,68 @@
   
   <div id="main-container" class="container" data-ng-controller="SetsGameController">
   
-    <div>
-      <label for="noOfDots">Number of dots (between 3 and 6):</label>
-      <input id="noOfDots" type="number" min="3" max="6" data-ng-model="noOfDots">
-      <button data-ng-click="initializeGame()"><span data-ng-hide="gameInitialized">Start</span><span data-ng-show="gameInitialized">Restart</span> Game</button>
+    <div data-ng-show="gameInitialized" class="text-right">
+      <button class="btn btn-primary btn-large" data-ng-click="initializeGame()">Restart Game</button>
+    </div>
+    
+    <div data-ng-hide="gameInitialized" class="text-center" id="difficultySelector">
+      <h2>Projective Set</h2>
+      <p>No idea what this is? Instructions coming soon.</p>
+      
+      <hr>
+      
+      <h3>Select Difficulty Level</h3>
+      
+      <table border="0" width="100%">
+        <tr data-ng-click="initializeGame(3)">
+          <td><div data-monochromecard data-ng-init="c = 7" class="small"></div></td>
+          <td>
+            3 dots/card<br>
+            8 cards/deck<br>
+            4 cards on table<br>
+            a minute per game
+          </td>
+          <td>
+            <button class="btn btn-primary btn-large btn-info">beginner</button>
+          </td>
+        </tr>
+        <tr data-ng-click="initializeGame(4)">
+          <td><div data-monochromecard data-ng-init="c = 15" class="small"></div></td>
+          <td>
+            4 dots/card<br>
+            15 cards/deck<br>
+            5 cards on table<br>
+            a minute or two per game
+          </td>
+          <td>
+            <button class="btn btn-primary btn-large btn-success">easy</button>
+          </td>
+        </tr>
+        <tr data-ng-click="initializeGame(5)">
+          <td><div data-monochromecard data-ng-init="c = 31" class="small"></div></td>
+          <td>
+            5 dots/card<br>
+            31 cards/deck<br>
+            6 cards on table<br>
+            2-5 minutes per game
+          </td>
+          <td>
+            <button class="btn btn-primary btn-large btn-warning">intermediate</button>
+          </td>
+        </tr>
+        <tr data-ng-click="initializeGame(6)">
+          <td><div data-monochromecard data-ng-init="c = 63" class="small"></div></td>
+          <td>
+            6 dots/card<br>
+            63 cards/deck<br>
+            7 cards on table<br>
+            10-30 minutes per game
+          </td>
+          <td>
+            <button class="btn btn-primary btn-large btn-danger">hard</button>
+          </td>
+        </tr>
+      </table>
     </div>
     
     <hr>
