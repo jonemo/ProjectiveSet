@@ -137,8 +137,23 @@ myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $h
     console.log('xor', xor);
     
     if (xor === 0 && selectedCnt > 0) $scope.correctSetSelected();
-  }
-  
+  };
+
+
+  $(document).on("keydown", function (e) {
+    console.log(e);
+    var c = {};
+    var ekc = e.keyCode;
+    if(ekc >= 96 && ekc <= 105) ekc -= 48;
+    if(ekc < 49 || ekc > 49 + $scope.noOfDots) return false;
+    var cardId = ekc - 49;
+
+    console.log('card selected:', cardId);
+
+    $scope.toggleCard($scope.visibleCards[cardId]);
+    $scope.$apply();
+  });
+
 
 
 }]);
