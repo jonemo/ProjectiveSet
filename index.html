@@ -6,15 +6,15 @@
   <title>Projective Set</title>
   <meta name="description" content="">
   <meta name="author" content="">
-  
+
   <link rel="shortcut icon" href="/favicon.png" />
   <link rel="stylesheet" type="text/css" href="/bootstrap.min.css" />
-  
+
   <style>
     body {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;}
-    
+
     .container {width: 520px}
-  
+
     .card {border:1px solid #555; width:100px; height: 150px; border-radius: 0 4px 0 0; margin:0 15px 25px 0; float:left}
     .card.selected {background-color: #ccc}
     .dot {float:left; width:34px; height: 34px; border: 1px solid; border-radius: 25px; margin: 7px;}
@@ -26,14 +26,14 @@
     .dot3 {background-color:green; border-color: green }
     .dot4 {background-color:blue; border-color: blue }
     .dot5 {background-color:purple; border-color: purple }
-    
+
     hr {clear:both}
     .correctSet {clear:both; margin-top:30px;}
     .correctSet .card, .card.small {width:50px; height: 75px; border-radius: 0 2px 0 0; margin:0 7px 12px 0;}
     .correctSet .dot, .card.small .dot {width:17px; height: 17px; border-radius: 12px; margin: 3px}
-    .correctSet .nodot, .card.small .nodot {margin: 4px} 
+    .correctSet .nodot, .card.small .nodot {margin: 4px}
   </style>
-  
+
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -52,21 +52,21 @@
     <header class="wrapper clearfix">
     </header>
   </div>
-  
-  <div id="main-container" class="container" data-ng-controller="SetsGameController">
-  
+
+  <div id="main-container" class="container" data-ng-controller="SetsGameController" data-ng-keypress="keypress()">
+
     <div data-ng-show="gameInitialized" class="text-right">
       <button class="btn btn-primary btn-large" data-ng-click="initializeGame()">Restart Game</button>
     </div>
-    
+
     <div data-ng-hide="gameInitialized" class="text-center" id="difficultySelector">
       <h2>Projective Set</h2>
       <p>No idea what this is? Instructions coming soon.</p>
-      
+
       <hr>
-      
+
       <h3>Select Difficulty Level</h3>
-      
+
       <table border="0" width="100%">
         <tr data-ng-click="initializeGame(3)">
           <td><div data-monochromecard data-ng-init="c = 7" class="small"></div></td>
@@ -118,27 +118,27 @@
         </tr>
       </table>
     </div>
-    
+
     <hr>
 
     <div data-ng-repeat="c in visibleCards" data-card data-ng-click="toggleCard(c)" data-ng-show="gameInitialized"></div>
-    
+
     <hr>
-    
+
     <div class="correctSet" data-ng-repeat="s in correctSets" data-ng-show="gameInitialized">
       <div data-ng-repeat="c in s" data-card></div>
     </div>
-    
+
     <hr>
-    
+
     <div class="correctSet" style="display:none">
       <p>remaining in deck</p>
       <div data-ng-repeat="c in deck" data-card data-ng-click="toggleCard(c)"></div>
     </div>
-    
+
   </div> <!-- #main-container -->
 
-  
+
   <div id="footer-container">
     <footer class="wrapper">
 
