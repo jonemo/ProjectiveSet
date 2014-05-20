@@ -98,11 +98,9 @@ myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $h
   }
 
   $scope.correctSetSelected = function () {
-    console.log('correctSetSelected');
     var correctSet = [];
     for (var i=0; i<$scope.visibleCards.length; i++) {
       if ($scope.visibleCards[i].selected) {
-        console.log('selected:', $scope.visibleCards[i].value);
         correctSet.push($scope.visibleCards[i]);
         $scope.visibleCards.splice(i,1);
         i--;
@@ -134,21 +132,16 @@ myApp.controller( 'SetsGameController', ['$scope', '$http', function ($scope, $h
       }
     }
 
-    console.log('xor', xor);
-
     if (xor === 0 && selectedCnt > 0) $scope.correctSetSelected();
   };
 
 
   $(document).on("keydown", function (e) {
-    console.log(e);
     var c = {};
     var ekc = e.keyCode;
     if(ekc >= 96 && ekc <= 105) ekc -= 48;
     if(ekc < 49 || ekc > 49 + $scope.noOfDots) return false;
     var cardId = ekc - 49;
-
-    console.log('card selected:', cardId);
 
     $scope.toggleCard($scope.visibleCards[cardId]);
     $scope.$apply();
