@@ -1,0 +1,95 @@
+body {
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+}
+
+#app {
+  width: 520px;
+  margin: 0 auto;
+}
+
+.playingcard {
+  border: 1px solid #555;
+  width: 100px;
+  height: 150px;
+  border-radius: 0 4px 0 0;
+  margin: 12px 7px 13px 8px;
+  padding: 3px 1px;
+  display: inline-block;
+}
+
+.playingcard.selected {
+  background-color: #ccc
+}
+
+.dot {
+  float: right;
+  width: 34px;
+  height: 34px;
+  border: 1px solid;
+  border-radius: 25px;
+  margin: 7px;
+}
+
+.nodot {
+  border: 0;
+}
+
+.monodot {
+  background-color: grey;
+  border-color: grey
+}
+
+.dot16 {
+  background-color: red;
+  border-color: red
+}
+
+.dot32 {
+  background-color: orange;
+  border-color: orange
+}
+
+.dot4 {
+  background-color: yellow;
+  border-color: yellow
+}
+
+.dot8 {
+  background-color: green;
+  border-color: green
+}
+
+.dot1 {
+  background-color: blue;
+  border-color: blue
+}
+
+.dot2 {
+  background-color: purple;
+  border-color: purple
+}
+
+hr {
+  clear: both
+}
+
+.correctSet {
+  clear: both;
+  margin-top: 30px;
+}
+
+.correctSet .playingcard,
+.playingcard.small {
+  width: 50px;
+  height: 75px;
+  border-radius: 0 3px 0 0;
+  margin: 6px 3px 6px 4px;
+}
+
+.correctSet .dot,
+.playingcard.small .dot {
+  width: 17px;
+  height: 17px;
+  border-radius: 12px;
+  margin: 3px
+}

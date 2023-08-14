@@ -1,156 +1,18 @@
+<!doctype html>
 <html lang="en">
+
 <head>
-  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBD1EMFZFX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-HBD1EMFZFX');
-  </script>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=520, user-scalable=no"/>
-
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Projective Set</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <link rel="shortcut icon" href="/favicon.png" />
-  <link rel="stylesheet" type="text/css" href="/bootstrap.min.css" />
-
-  <style>
-    body {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;}
-
-    .container {width: 520px}
-
-    .card {border:1px solid #555; width:100px; height: 150px; border-radius: 0 4px 0 0; margin:0 15px 25px 0; float:left}
-    .card.selected {background-color: #ccc}
-    .dot {float:left; width:34px; height: 34px; border: 1px solid; border-radius: 25px; margin: 7px;}
-    .nodot {border: 0; margin: 8px}
-    .monodot { background-color:grey; border-color: grey}
-    .dot0 {background-color:red; border-color: red }
-    .dot1 {background-color:orange; border-color: orange }
-    .dot2 {background-color:yellow; border-color: yellow }
-    .dot3 {background-color:green; border-color: green }
-    .dot4 {background-color:blue; border-color: blue }
-    .dot5 {background-color:purple; border-color: purple }
-
-    hr {clear:both}
-    .correctSet {clear:both; margin-top:30px;}
-    .correctSet .card, .card.small {width:50px; height: 75px; border-radius: 0 2px 0 0; margin:0 7px 12px 0;}
-    .correctSet .dot, .card.small .dot {width:17px; height: 17px; border-radius: 12px; margin: 3px}
-    .correctSet .nodot, .card.small .nodot {margin: 4px}
-  </style>
-
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
 </head>
-<body data-ng-app="SetsGame">
 
-  <div id="header-container">
-    <header class="wrapper clearfix">
-    </header>
-  </div>
-
-  <div id="main-container" class="container" data-ng-controller="SetsGameController" data-ng-keypress="keypress()">
-
-    <div data-ng-show="gameInitialized" class="text-right">
-      <button class="btn btn-primary btn-large" data-ng-click="initializeGame()">Restart Game</button>
-    </div>
-
-    <div data-ng-hide="gameInitialized" class="text-center" id="difficultySelector">
-      <h2>Projective Set</h2>
-      <p>No idea what this is? Instructions coming soon.</p>
-
-      <hr>
-
-      <h3>Select Difficulty Level</h3>
-
-      <table border="0" width="100%">
-        <tr data-ng-click="initializeGame(3)">
-          <td><div data-monochromecard data-ng-init="c = 7" class="small"></div></td>
-          <td>
-            3 dots/card<br>
-            8 cards/deck<br>
-            4 cards on table<br>
-            a minute per game
-          </td>
-          <td>
-            <button class="btn btn-primary btn-large btn-info">beginner</button>
-          </td>
-        </tr>
-        <tr data-ng-click="initializeGame(4)">
-          <td><div data-monochromecard data-ng-init="c = 15" class="small"></div></td>
-          <td>
-            4 dots/card<br>
-            15 cards/deck<br>
-            5 cards on table<br>
-            a minute or two per game
-          </td>
-          <td>
-            <button class="btn btn-primary btn-large btn-success">easy</button>
-          </td>
-        </tr>
-        <tr data-ng-click="initializeGame(5)">
-          <td><div data-monochromecard data-ng-init="c = 31" class="small"></div></td>
-          <td>
-            5 dots/card<br>
-            31 cards/deck<br>
-            6 cards on table<br>
-            2-5 minutes per game
-          </td>
-          <td>
-            <button class="btn btn-primary btn-large btn-warning">intermediate</button>
-          </td>
-        </tr>
-        <tr data-ng-click="initializeGame(6)">
-          <td><div data-monochromecard data-ng-init="c = 63" class="small"></div></td>
-          <td>
-            6 dots/card<br>
-            63 cards/deck<br>
-            7 cards on table<br>
-            10-30 minutes per game
-          </td>
-          <td>
-            <button class="btn btn-primary btn-large btn-danger">hard</button>
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <hr>
-
-    <div data-ng-repeat="c in visibleCards" data-card data-ng-click="toggleCard(c)" data-ng-show="gameInitialized"></div>
-
-    <hr>
-
-    <div class="correctSet" data-ng-repeat="s in correctSets" data-ng-show="gameInitialized">
-      <div data-ng-repeat="c in s" data-card></div>
-    </div>
-
-    <hr>
-
-    <div class="correctSet" style="display:none">
-      <p>remaining in deck</p>
-      <div data-ng-repeat="c in deck" data-card data-ng-click="toggleCard(c)"></div>
-    </div>
-
-  </div> <!-- #main-container -->
-
-
-  <div id="footer-container">
-    <footer class="wrapper">
-
-    </footer>
-  </div>
-
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.3.min.js"><\/script>')</script>
-  <script src="controller.js"></script>
-
-
-
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
 </body>
+
 </html>
