@@ -20,8 +20,9 @@ const actuallyShowInstructions = computed(() => props.showInstructions || showIn
 
     <div v-if="actuallyShowInstructions">
       <p>
-        This is a single-player version of the Projective Set game. See <a href="">Wikipedia</a> for more about the game
-        and <a href="https://jonasneubert.com/projects/projectiveset/">my website</a> for details about this site.
+        This is a single-player version of the Projective Set game. See
+        <a href="https://en.wikipedia.org/wiki/Projective_Set_(game)">Wikipedia</a> for more about the game and
+        <a href="https://jonasneubert.com/projects/projectiveset/">my website</a> for details about this site.
       </p>
       <p>
         Your goal is to find a subset of the visible cards where each color of dot appears an even number of times. Once
