@@ -51,7 +51,7 @@ let showDifficulties = computed(() => beforeFirstRound.value || (!roundInProgres
             Round completed in {{ previousRounds[previousRounds.length - 1].timeNeeded }} seconds!
           </CCardTitle>
           <CCardSubtitle>
-            The difficulty was {{ previousRounds[previousRounds.length - 1].timeNeeded }} and you found {{
+            The difficulty was {{ previousRounds[previousRounds.length - 1].noOfDots }} and you found {{
               previousRounds[previousRounds.length - 1].correctSets.length }} sets.
           </CCardSubtitle>
           <CButton color="primary" size="sm" @click="startRound">
