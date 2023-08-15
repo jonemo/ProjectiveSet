@@ -58,7 +58,7 @@ const DifficultyLevels = [
             {{ level.duration }} per game
           </CCol>
           <CCol xs="4">
-            <CButton :color="level.color" style="width: 7em">{{ level.name }}</CButton>
+            <CButton :color="level.color" style="width: 8em">{{ level.name }}</CButton>
           </CCol>
         </CRow>
       </CContainer>

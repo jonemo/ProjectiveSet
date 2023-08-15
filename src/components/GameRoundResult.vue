@@ -34,7 +34,7 @@ const difficultyToInfo: DifficultyToInfoMap = {
   <CAccordion flush>
     <CAccordionItem v-for="(round, roundIndex) in props.rounds" :key="roundIndex" :game-round-info="round">
       <CAccordionHeader>
-        <CBadge :color="difficultyToInfo[round.noOfDots].color" style="width: 7em; margin-right: 2em">{{
+        <CBadge :color="difficultyToInfo[round.noOfDots].color" style="width: 8em; margin-right: 2em">{{
           difficultyToInfo[round.noOfDots].name }}</CBadge>
         Completed in {{ round.timeNeeded.toFixed(2) }} seconds
       </CAccordionHeader>
