@@ -18,8 +18,8 @@
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
-    "@tsconfig/node18": "^2.0.1",
-    "@types/node": "^18.16.17",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.19.0",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
